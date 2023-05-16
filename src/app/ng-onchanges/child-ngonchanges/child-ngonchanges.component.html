@@ -1,0 +1,27 @@
+<h2>About NgOnChanges and NgDoCheck</h2>
+<ol>
+    <li>It will never called if the child data between parent to child or child to parent is not happening</li>
+    <li>When changes occure then only NgOnChanges is called</li>
+    <li>It will be called when before the ngOnInit. Then life cycle will be
+        constructor => NgOnChanges => ngOnInit: this will be for the first time only.
+    </li>
+    <li>After the first load, if any change happened on to the dom then it will only NgOnChanges.</li>
+    <li>NgOnChanges is for the child component input properties if changes happend it will refelect that</li>
+    <li>NgOninit is for component first load and changes is for the input for child component</li>
+    <li>NgOnChanges will not detect the object or array. Because change detection only
+        checks object identity, not object content. Inserts or removals are therefore not detected.
+    </li>
+    <li>To check the object or array we have to copy array or object when update or create a new
+        object or array each time when it update happens.
+    </li>
+    <li>
+        If you want to avoid the new object or array creation then we have another hook called
+        ngDoCheck();
+    </li>
+    <li>NgDocheck will be called every single time when when there is a change in the object or array that
+        we are transfering to the child component.
+        Eg: If object has an input, then whenever there is keypress it will be calling child.
+        Better to prefer create new object or array everytime so that we have previous and
+        current value access.
+    </li>
+</ol>

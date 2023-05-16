@@ -1,0 +1,29 @@
+<p #currentComponentHtml> child-after works!</p>
+<ng-content #content></ng-content>
+<ul>
+    <li>To access content we have to first load it and wait if that is in the dom or not.
+        To find out if this is in dom or not we use ngAfterContentInit hook
+    </li>
+    <li>
+        first load sequence ngOnChanges, ngOnInit, Do check, ngAfterContentInit, ngAfterContentChecked, 
+        ngAfterViewInit, ngAfterViewChecked
+    </li>
+    <li>
+        second load sequence ngOnChanges, Do check, ngAfterContentChecked, ngAfterViewChecked
+    </li>
+</ul>
+
+<h2>On destory</h2>
+
+<ul>
+    <li>It will call when component is not in the dom.</li>
+    <li>useful to release the memory that we have occupied or unsubscibe from the rxjs observables.</li>
+    <li>In the example there is a timer going on, we have to clean when we are not using this component
+        what we can do is on destory we can clean the interval otherwise Do check, ngAfterContentChecked, ngAfterViewChecked
+        these three will be called unnessary.
+    </li>
+    <li>Also if not clear the interval, timer will continue in background and when we goto different route
+        and comeback to this route another timer will continues with parallelly with old one. If we goback and comeback
+        again then it will continue 3rd time as well.
+    </li>
+</ul>

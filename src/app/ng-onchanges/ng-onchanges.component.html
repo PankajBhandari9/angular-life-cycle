@@ -1,0 +1,8 @@
+<p>ng-onchanges works!</p>
+<input type="text" (blur)="handleInpput($event)">
+<div>
+    <p><input type="text" [(ngModel)]="name" placeholder="Enter Name"></p>
+    <p><input type="number" [(ngModel)]="age" placeholder="Enter Age"></p>
+    <button (click)="parentToChild()">Transfer to Child component</button>
+</div>
+<app-child-ngonchanges [childVarParentData]="parentData" [wholeForm]="fromDetail"></app-child-ngonchanges>
